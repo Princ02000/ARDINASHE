@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // SPA redirect for GitHub Pages
+        // This script handles 404 errors by redirecting to the root with the original path
+        const path = window.location.pathname.replace('/ARDINASHE', '');
+        if (path !== '/' && !path.includes('.')) {
+            sessionStorage.setItem('redirect_path', path);
+            window.location.href = '/ARDINASHE/';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
