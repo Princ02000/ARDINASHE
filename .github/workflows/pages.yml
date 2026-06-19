@@ -19,11 +19,25 @@ jobs:
         run: bun install
       - name: Build
         run: bun run build
+      - name: Reorganize dist for GitHub Pages
+        run: |
+          # Move client files to root for GitHub Pages
+          if [ -d "dist/client" ]; then
+            cd dist
+            # Copy client files to root
+            cp client/index.html .
+            cp client/404.html .
+            mkdir -p assets
+            cp -r client/assets/* assets/ || true
+            # Clean up the nested structure, keep .nojekyll and server (for reference)
+            cd ..
+          fi
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           force_orphan: true
+
 
 
