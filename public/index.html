@@ -2,27 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/ARDINASHE/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="ARDINASH Consultancy" />
-    <meta property="og:description" content="Professional consulting services" />
+    <meta property="og:title" content="Ardinash Consultancy — Growing Wealth. Building Futures." />
+    <meta property="og:description" content="Zimbabwe's trusted partner for company registration, ZIMRA tax clearance, VAT, NSSA, PAYE and PRAZ compliance." />
     <meta property="og:image" content="https://ardinash.app/og-image.jpg" />
-    <meta name="twitter:title" content="ARDINASH Consultancy" />
-    <meta name="twitter:description" content="Professional consulting services" />
+    <meta name="twitter:title" content="Ardinash Consultancy" />
+    <meta name="twitter:description" content="Zimbabwe's trusted partner for professional consulting services" />
     <meta name="twitter:image" content="https://ardinash.app/og-image.jpg" />
-    <title>ARDINASH Consultancy</title>
-    <script>
-      // Handle SPA routing for GitHub Pages
-      if (sessionStorage.getItem('redirect_path')) {
-        const redirectPath = sessionStorage.getItem('redirect_path');
-        sessionStorage.removeItem('redirect_path');
-        // The app will handle routing
-      }
-    </script>
+    <title>Ardinash Consultancy — Growing Wealth. Building Futures.</title>
+    <link rel="icon" type="image/svg+xml" href="/ARDINASHE/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="/ARDINASHE/assets/styles-ka_Ty-dU.css" />
   </head>
   <body>
     <div id="root"></div>
+    <script type="module">
+      // Route the app properly by storing the intended path
+      const path = window.location.pathname;
+      if (path && path !== '/' && !path.includes('.')) {
+        sessionStorage.setItem('router_path', path);
+      }
+    </script>
     <script type="module" src="/ARDINASHE/assets/index-DAV_GLES.js"></script>
   </body>
 </html>
+
 
