@@ -13,31 +13,109 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
+
       - name: Install dependencies
         run: bun install
+
       - name: Build
+        env:
+          # Publishable (non-secret) Supabase keys needed at build time
+          VITE_SUPABASE_URL: https://crkqrcgeozaacqxocmaj.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_ILkSYDJkSwN9LxeU4L4R8w_cBcI2qnn
+          VITE_SUPABASE_PROJECT_ID: crkqrcgeozaacqxocmaj
+          SUPABASE_URL: https://crkqrcgeozaacqxocmaj.supabase.co
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_ILkSYDJkSwN9LxeU4L4R8w_cBcI2qnn
+          SUPABASE_PROJECT_ID: crkqrcgeozaacqxocmaj
         run: bun run build
-      - name: Reorganize dist for GitHub Pages
+
+      - name: Prepare static output for GitHub Pages
         run: |
-          # Move client files to root for GitHub Pages
+          set -e
+
+          # TanStack Start outputs prerendered HTML + client assets under dist/client/
+          # Fall back to dist/ if dist/client/ doesn't exist
           if [ -d "dist/client" ]; then
-            cd dist
-            # Copy client files to root
-            cp client/index.html .
-            cp client/404.html .
-            mkdir -p assets
-            cp -r client/assets/* assets/ || true
-            # Clean up the nested structure, keep .nojekyll and server (for reference)
-            cd ..
+            DEPLOY_DIR="dist/client"
+          else
+            DEPLOY_DIR="dist"
           fi
+
+          echo "Deploying from: $DEPLOY_DIR"
+          ls -la "$DEPLOY_DIR"
+
+          # Prevent Jekyll processing (required for directories starting with _)
+          touch "$DEPLOY_DIR/.nojekyll"
+
+          # If prerendering produced an index.html use it; otherwise generate one
+          # dynamically from whatever JS/CSS assets Vite actually emitted
+          if [ ! -f "$DEPLOY_DIR/index.html" ]; then
+            echo "index.html not found – generating from built assets"
+
+            JS_FILE=$(ls "$DEPLOY_DIR/assets/"*.js 2>/dev/null | head -1 | xargs -I{} basename {} 2>/dev/null || echo "")
+            CSS_FILE=$(ls "$DEPLOY_DIR/assets/"*.css 2>/dev/null | head -1 | xargs -I{} basename {} 2>/dev/null || echo "")
+
+            {
+              echo '<!DOCTYPE html>'
+              echo '<html lang="en">'
+              echo '  <head>'
+              echo '    <meta charset="UTF-8" />'
+              echo '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />'
+              echo '    <title>Ardinash Consultancy — Growing Wealth. Building Futures.</title>'
+              echo '    <meta name="description" content="Zimbabwe'\''s trusted partner for company registration, ZIMRA tax clearance, VAT, NSSA, PAYE and PRAZ compliance." />'
+              echo '    <meta property="og:title" content="Ardinash Consultancy — Growing Wealth. Building Futures." />'
+              echo '    <meta property="og:type" content="website" />'
+              echo '    <meta name="twitter:card" content="summary_large_image" />'
+              echo '    <link rel="preconnect" href="https://fonts.googleapis.com" />'
+              echo '    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />'
+              echo '    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" />'
+              if [ -n "$CSS_FILE" ]; then
+                echo "    <link rel=\"stylesheet\" href=\"/ARDINASHE/assets/$CSS_FILE\" />"
+              fi
+              echo '  </head>'
+              echo '  <body>'
+              echo '    <div id="root"></div>'
+              if [ -n "$JS_FILE" ]; then
+                echo "    <script type=\"module\" src=\"/ARDINASHE/assets/$JS_FILE\"></script>"
+              fi
+              echo '  </body>'
+              echo '</html>'
+            } > "$DEPLOY_DIR/index.html"
+
+            echo "Generated index.html with JS=$JS_FILE CSS=$CSS_FILE"
+          else
+            echo "Using prerendered index.html"
+          fi
+
+          # Always write a fresh 404.html for SPA routing
+          cat > "$DEPLOY_DIR/404.html" << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Ardinash Consultancy</title>
+            <script>
+              var path = window.location.pathname.replace('/ARDINASHE', '') || '/';
+              if (path && path !== '/' && path.indexOf('.') === -1) {
+                sessionStorage.setItem('spa_redirect', path);
+              }
+              window.location.replace('/ARDINASHE/');
+            </script>
+          </head>
+          <body><p>Redirecting...</p></body>
+          </html>
+          EOF
+
+          echo "Final deploy dir contents:"
+          ls -la "$DEPLOY_DIR"
+          echo "DEPLOY_DIR=$DEPLOY_DIR" >> $GITHUB_ENV
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ${{ env.DEPLOY_DIR }}
           force_orphan: true
-
-
-

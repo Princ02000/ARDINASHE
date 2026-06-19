@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import logoAsset from "@/assets/ardinash-logo.asset.json";
+import logoSrc from "@/assets/ardinash-logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import {
   Phone, Mail, MapPin, Instagram, Check, Clock, Shield, Zap,
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const logo = logoAsset.url;
+const logo = logoSrc;
 const PHONE_1 = "+263775403888";
 const PHONE_2 = "+263714213372";
 const WA_NUMBER = "263775403888";
