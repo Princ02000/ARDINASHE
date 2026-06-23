@@ -12,9 +12,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ardinash Consultancy — Growing Wealth. Building Futures." },
-      { name: "description", content: "Zimbabwe's trusted partner for company registration, ZIMRA tax clearance, VAT, NSSA, PAYE and PRAZ compliance. We comply, you grow." },
-      { property: "og:title", content: "Ardinash Consultancy — Growing Wealth. Building Futures." },
+      { title: "Ardinash Financial & Compliance — Growing Wealth. Building Futures." },
+      { name: "description", content: "Zimbabwe's trusted partner for company registration, ZIMRA tax clearance, VAT, NSSA and PAYE compliance. We comply, you grow." },
+      { property: "og:title", content: "Ardinash Financial & Compliance — Growing Wealth. Building Futures." },
       { property: "og:description", content: "Register your Private Limited Company in Zimbabwe in as little as 3 days. Full compliance, hassle-free." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -173,10 +173,10 @@ function Index() {
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logo} alt="Ardinash Consultancy" className="h-10 w-10 rounded-md object-contain" />
+            <img src={logo} alt="Ardinash Financial & Compliance" className="h-10 w-10 rounded-md object-contain" />
             <div className="leading-tight">
               <div className="font-display text-lg font-bold text-primary">ARDINASH</div>
-              <div className="text-[10px] tracking-[0.25em] text-muted-foreground">CONSULTANCY</div>
+              <div className="text-[10px] tracking-[0.25em] text-muted-foreground">FINANCIAL & COMPLIANCE</div>
             </div>
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
@@ -241,7 +241,7 @@ function Index() {
                 <img src={logo} alt="Ardinash logo" className="mx-auto h-32 w-32 object-contain" />
                 <div className="mt-4 text-center">
                   <div className="font-display text-2xl font-bold text-primary">ARDINASH</div>
-                  <div className="text-[10px] tracking-[0.3em] text-accent">— CONSULTANCY —</div>
+                  <div className="text-[10px] tracking-[0.3em] text-accent">— FINANCIAL & COMPLIANCE —</div>
                   <div className="mt-2 text-[10px] tracking-widest text-muted-foreground">GROWING WEALTH. BUILDING FUTURES.</div>
                 </div>
                 <div className="mt-6 grid grid-cols-2 gap-3">
@@ -545,7 +545,7 @@ function Index() {
                 <img src={logo} alt="" className="h-12 w-12 rounded-md bg-white object-contain p-1" />
                 <div>
                   <div className="font-display text-xl font-bold">ARDINASH</div>
-                  <div className="text-[10px] tracking-[0.25em] text-blue-200">CONSULTANCY</div>
+                  <div className="text-[10px] tracking-[0.25em] text-blue-200">FINANCIAL & COMPLIANCE</div>
                 </div>
               </div>
               <p className="mt-4 text-sm text-blue-100">Growing wealth. Building futures. Your trusted partner in compliance.</p>
@@ -584,7 +584,7 @@ function Index() {
           </div>
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/15 pt-6 text-xs text-blue-200 md:flex-row">
-            <p>© {new Date().getFullYear()} Ardinash Consultancy. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Ardinash Financial & Compliance. All rights reserved.</p>
             <p className="tracking-[0.3em]">BELIEVE · PLAN · ACHIEVE</p>
           </div>
         </div>
