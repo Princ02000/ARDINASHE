@@ -171,12 +171,13 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logo} alt="Ardinash Financial & Compliance" className="h-10 w-10 rounded-md object-contain" />
+            <img src={logo} alt="Ardinash Financial & Compliance" className="h-9 w-9 rounded-md object-contain sm:h-10 sm:w-10" />
             <div className="leading-tight">
-              <div className="font-display text-lg font-bold text-primary">ARDINASH</div>
-              <div className="text-[10px] tracking-[0.25em] text-muted-foreground">FINANCIAL & COMPLIANCE</div>
+              <div className="font-display text-base font-bold text-primary sm:text-lg">ARDINASH</div>
+              <div className="hidden text-[10px] tracking-[0.25em] text-muted-foreground sm:block">FINANCIAL & COMPLIANCE</div>
+              <div className="text-[9px] tracking-[0.15em] text-muted-foreground sm:hidden">CONSULTANTS</div>
             </div>
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
@@ -190,9 +191,11 @@ function Index() {
           </nav>
           <button
             onClick={() => open("Talk to us", "Hi Ardinash, I'd like to learn more about your services.")}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-card transition hover:shadow-elegant hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-card transition hover:shadow-elegant hover:scale-[1.02] sm:px-5 sm:py-2.5"
           >
-            <Phone className="h-4 w-4" /> Talk to us
+            <Phone className="h-4 w-4" />
+            <span className="hidden sm:inline">Talk to us</span>
+            <span className="sm:hidden">Call</span>
           </button>
         </div>
       </header>
@@ -333,7 +336,7 @@ function Index() {
             <p className="mt-4 text-muted-foreground">Transparent pricing. CIPZ fees included. <span className="font-semibold text-primary">ZIG accepted.</span></p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {packages.map((p) => (
               <div
                 key={p.name}
@@ -539,7 +542,7 @@ function Index() {
       {/* CONTACT */}
       <section id="contact" className="bg-primary py-20 text-primary-foreground">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 md:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="md:col-span-1">
               <div className="flex items-center gap-3">
                 <img src={logo} alt="" className="h-12 w-12 rounded-md bg-white object-contain p-1" />
