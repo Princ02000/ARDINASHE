@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ardinash Consultancy</title>
+  <script>
+    var path = window.location.pathname.replace('/ARDINASHE', '') || '/';
+    if (path && path !== '/' && path.indexOf('.') === -1) {
+      sessionStorage.setItem('spa_redirect', path);
+    }
+    window.location.replace('/ARDINASHE/');
+  </script>
+</head>
+<body><p>Redirecting...</p></body>
+</html>
