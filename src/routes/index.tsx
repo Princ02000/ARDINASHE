@@ -104,7 +104,7 @@ function ContactDialog({ ctx, onClose }: { ctx: ContactCtx; onClose: () => void 
             href={waLink(ctx.message)}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-between rounded-2xl border border-border bg-gradient-to-r from-[oklch(0.65_0.16_155)] to-[oklch(0.55_0.18_158)] p-4 text-white shadow-card transition hover:scale-[1.02]"
+            className="flex items-center justify-between rounded-2xl border border-border bg-gradient-to-r from-[oklch(0.65_0.16_155)] to-[oklch(0.55_0.18_158)] p-4 text-white shadow-card transition hover:shadow-glow"
           >
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/20"><MessageCircle className="h-5 w-5" /></div>
@@ -191,7 +191,7 @@ function Index() {
           </nav>
           <button
             onClick={() => open("Talk to us", "Hi Ardinash, I'd like to learn more about your services.")}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-card transition hover:shadow-elegant hover:scale-[1.02] sm:px-5 sm:py-2.5"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-card transition hover:shadow-elegant hover:scale-[1.02]"
           >
             <Phone className="h-4 w-4" />
             <span className="hidden sm:inline">Talk to us</span>
@@ -411,7 +411,7 @@ function Index() {
                 <button
                   onClick={() => open(
                     "Private Ltd Company Registration",
-                    "Hi Ardinash, I'd like to register a Private Limited Company. Here are my details:\n\n• Proposed Names (5):\n1.\n2.\n3.\n4.\n5.\n\n• Director 1 — Full name, ID/Passport, Gender, DOB, Email, Phone:\n• Director 2 — Full name, ID/Passport, Gender, DOB, Email, Phone:\n\n• Shareholders & %:\n• Business Address (physical & postal):\n• Business Objective:\n",
+                    "Hi Ardinash, I'd like to register a Private Limited Company. Here are my details:\n\n• Proposed Names (5):\n1.\n2.\n3.\n4.\n5.\n\n• Director 1 — Full name, ID/Passport, Gender, DOB, Email:\n\n• Director 2 — Full name, ID/Passport, Gender, DOB, Email:\n\n• Shareholders & %:\n\n• Business Address:\n\n• Business Objective:\n\n• Contact:"
                   )}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-card transition hover:scale-[1.02]"
                 >
