@@ -72,6 +72,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// Get the base path from the environment or use import.meta.env.BASE_URL
+const getStylesheetPath = () => {
+  const base = import.meta.env.BASE_URL || '/ARDINASHE/';
+  return new URL(appCss, base).href;
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -86,10 +92,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ardinash Financial & Compliance — Growing Wealth. Building Futures." },
       { name: "twitter:description", content: "Zimbabwe's trusted partner for company registration, ZIMRA tax clearance, VAT, NSSA, PAYE and PRAZ compliance." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed7aed9a-172a-4336-b2f1-48b3a6638671/id-preview-da8c0038--d808b639-def2-47d7-ac96-25180bf7f9f8.ardinash.app-1781608003397.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed7aed9a-172a-4336-b2f1-48b3a6638671/id-preview-da8c0038--d808b639-def2-47d7-ac96-25180bf7f9f8.ardinash.app-1781608003397.png" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed7aed9a-172a-4336-b2f1-48b3a6638671/id-preview-da8c0038--d808b639-def2-47d7-ac96-25180bf7f9f8.ardinash.[...]" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed7aed9a-172a-4336-b2f1-48b3a6638671/id-preview-da8c0038--d808b639-def2-47d7-ac96-25180bf7f9f8.ardinash[...]" },
     ],
     links: [
+      { rel: "stylesheet", href: getStylesheetPath() },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" },
