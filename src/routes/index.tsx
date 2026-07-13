@@ -298,7 +298,7 @@ function Index() {
             <img
               src={logo}
               alt="Ardinash Financial and Compliance"
-              className="h-9 w-9 rounded-md object-contain sm:h-10 sm:w-10"
+              className="h-12 w-12 rounded-md object-contain sm:h-14 sm:w-14"
             />
             <div className="leading-tight">
               <div className="font-display text-base font-bold text-primary sm:text-lg">
@@ -416,7 +416,11 @@ function Index() {
             <div className="absolute -inset-8 rounded-3xl gradient-primary opacity-30 blur-3xl" />
             <div className="relative rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-elegant">
               <div className="rounded-2xl bg-white p-6 shadow-card">
-                <img src={logo} alt="Ardinash logo" className="mx-auto h-32 w-32 object-contain" />
+                <img
+                  src={logo}
+                  alt="Ardinash logo"
+                  className="mx-auto h-44 w-44 object-contain sm:h-52 sm:w-52"
+                />
                 <div className="mt-4 text-center">
                   <div className="font-display text-2xl font-bold text-primary">ARDINASH</div>
                   <div className="text-[10px] tracking-[0.3em] text-accent">
@@ -847,7 +851,7 @@ function Index() {
                 <img
                   src={logo}
                   alt=""
-                  className="h-12 w-12 rounded-md bg-white object-contain p-1"
+                  className="h-16 w-16 rounded-md bg-white object-contain p-1.5"
                 />
                 <div>
                   <div className="font-display text-xl font-bold">ARDINASH</div>
